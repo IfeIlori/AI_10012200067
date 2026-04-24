@@ -27,15 +27,15 @@ interface Props {
   onBack: () => void;
 }
 
-const WELCOME_HTML = `Hello! I'm <strong>ACity Assistant</strong>, your RAG-powered academic helper for <strong>Academic City University College</strong>, Ghana.
+const WELCOME_HTML = `Hello! I'm <strong>ACity Assistant</strong>, your RAG-powered academic helper for <strong>Academic City University</strong>, Ghana.
 <br><br>I answer questions directly from two real documents:
 <ul style="margin: 8px 0 0 16px; line-height: 1.9">
-  <li style="font-size:13px"><strong>Ghana_Election_Result.csv</strong> : presidential &amp; parliamentary results 2016–2024</li>
+  <li style="font-size:13px"><strong>Ghana_Election_Result.csv</strong> : presidential &amp; parliamentary results 1992–2020</li>
   <li style="font-size:13px"><strong>2025-Budget-Statement.pdf</strong> : Ghana's full national budget (MOFEP)</li>
 </ul>
 <br>Try asking:
 <ul style="margin: 0 0 0 16px; line-height: 1.9">
-  <li style="font-size:13px">Who won the 2024 presidential election?</li>
+  <li style="font-size:13px">Who won the 2020 presidential election?</li>
   <li style="font-size:13px">How much was allocated to education in 2025?</li>
   <li style="font-size:13px">What is Ghana's current debt-to-GDP ratio?</li>
   <li style="font-size:13px">What happened in the 2020 parliamentary election?</li>
@@ -388,8 +388,13 @@ export default function ChatScreen({ visible, onBack }: Props) {
         }}
       >
         <div style={{ fontSize: 10, color: "rgba(255,255,255,.28)" }}>
-          Academic City University College · Accra, Ghana
+          Academic City University · Accra, Ghana
         </div>
+
+        <div style={{ fontSize: 10, color: "rgba(255,255,255,.28)" }}>
+          © 2026 Esther Ilori-Folarin. All Rights Reserved.
+        </div>
+
         <div
           style={{
             display: "flex",
@@ -399,6 +404,7 @@ export default function ChatScreen({ visible, onBack }: Props) {
             color: "rgba(255,255,255,.35)",
           }}
         >
+
           <div
             style={{
               background: "linear-gradient(90deg, #C8102E, #7B4FD4)",

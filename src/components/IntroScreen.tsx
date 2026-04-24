@@ -34,7 +34,7 @@ export default function IntroScreen({ visible, onLaunch }: Props) {
         </button>
 
         <div style={{ marginTop: 22, fontSize: 11, color: 'rgba(255,255,255,.2)' }}>
-          Academic City University College · Accra, Ghana · CS4241 Project
+          Academic City University · Accra, Ghana · CS4241 Project
         </div>
       </div>
     </div>

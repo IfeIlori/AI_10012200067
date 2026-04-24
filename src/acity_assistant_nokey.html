@@ -1,560 +1,1822 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>ACity Assistant : Academic City University College</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --red:#C8102E;--red-d:#8B1C3A;--navy:#1A2456;--deep:#080D1E;
-  --gold:#E8A020;--teal:#0AAFAF;--violet:#7B4FD4;--mint:#2DD4A0;--rose:#E8406A;
-  --glass:rgba(255,255,255,0.06);--gborder:rgba(255,255,255,0.12);
-  --t1:rgba(255,255,255,0.95);--t2:rgba(255,255,255,0.55);--t3:rgba(255,255,255,0.28);
-}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-family:'DM Sans',sans-serif}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>ACity Assistant : Academic City University College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --red: #c8102e;
+        --red-d: #8b1c3a;
+        --navy: #1a2456;
+        --deep: #080d1e;
+        --gold: #e8a020;
+        --teal: #0aafaf;
+        --violet: #7b4fd4;
+        --mint: #2dd4a0;
+        --rose: #e8406a;
+        --glass: rgba(255, 255, 255, 0.06);
+        --gborder: rgba(255, 255, 255, 0.12);
+        --t1: rgba(255, 255, 255, 0.95);
+        --t2: rgba(255, 255, 255, 0.55);
+        --t3: rgba(255, 255, 255, 0.28);
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--deep);
+        font-family: "DM Sans", sans-serif;
+      }
 
-/* ── BACKGROUND ── */
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.orb{position:absolute;border-radius:50%;filter:blur(72px);opacity:.42;animation:drift 11s ease-in-out infinite alternate}
-.o1{width:520px;height:520px;background:var(--red);top:-160px;left:-160px;animation-delay:0s}
-.o2{width:420px;height:420px;background:var(--violet);top:-80px;right:-130px;animation-delay:-3s}
-.o3{width:360px;height:360px;background:var(--teal);bottom:-110px;left:18%;animation-delay:-5.5s}
-.o4{width:260px;height:260px;background:var(--gold);bottom:60px;right:4%;animation-delay:-1.5s}
-.o5{width:210px;height:210px;background:var(--mint);top:44%;left:46%;animation-delay:-7s}
-@keyframes drift{to{transform:translate(38px,28px) scale(1.09)}}
-.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.023) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.023) 1px,transparent 1px);background-size:48px 48px}
-.shapes{position:absolute;inset:0;pointer-events:none}
-.sh{position:absolute;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);backdrop-filter:blur(4px);animation:flt 13s ease-in-out infinite}
-.s1{width:62px;height:62px;border-radius:15px;left:6%;top:17%;animation-delay:0s}
-.s2{width:42px;height:42px;border-radius:50%;left:83%;top:11%;animation-delay:-4s;animation-duration:15s}
-.s3{width:78px;height:26px;border-radius:8px;left:63%;top:73%;animation-delay:-7s;animation-duration:9s}
-.s4{width:34px;height:34px;border-radius:50%;left:11%;top:75%;animation-delay:-2s;animation-duration:17s}
-.s5{width:50px;height:50px;border-radius:12px;left:47%;top:7%;animation-delay:-9s;animation-duration:11s}
-.s6{width:28px;height:56px;border-radius:8px;left:91%;top:54%;animation-delay:-5s;animation-duration:14s}
-@keyframes flt{0%,100%{transform:translateY(0) rotate(0deg);opacity:.5}50%{transform:translateY(-20px) rotate(11deg);opacity:.9}}
+      /* ── BACKGROUND ── */
+      .bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(72px);
+        opacity: 0.42;
+        animation: drift 11s ease-in-out infinite alternate;
+      }
+      .o1 {
+        width: 520px;
+        height: 520px;
+        background: var(--red);
+        top: -160px;
+        left: -160px;
+        animation-delay: 0s;
+      }
+      .o2 {
+        width: 420px;
+        height: 420px;
+        background: var(--violet);
+        top: -80px;
+        right: -130px;
+        animation-delay: -3s;
+      }
+      .o3 {
+        width: 360px;
+        height: 360px;
+        background: var(--teal);
+        bottom: -110px;
+        left: 18%;
+        animation-delay: -5.5s;
+      }
+      .o4 {
+        width: 260px;
+        height: 260px;
+        background: var(--gold);
+        bottom: 60px;
+        right: 4%;
+        animation-delay: -1.5s;
+      }
+      .o5 {
+        width: 210px;
+        height: 210px;
+        background: var(--mint);
+        top: 44%;
+        left: 46%;
+        animation-delay: -7s;
+      }
+      @keyframes drift {
+        to {
+          transform: translate(38px, 28px) scale(1.09);
+        }
+      }
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.023) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.023) 1px,
+            transparent 1px
+          );
+        background-size: 48px 48px;
+      }
+      .shapes {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .sh {
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(4px);
+        animation: flt 13s ease-in-out infinite;
+      }
+      .s1 {
+        width: 62px;
+        height: 62px;
+        border-radius: 15px;
+        left: 6%;
+        top: 17%;
+        animation-delay: 0s;
+      }
+      .s2 {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        left: 83%;
+        top: 11%;
+        animation-delay: -4s;
+        animation-duration: 15s;
+      }
+      .s3 {
+        width: 78px;
+        height: 26px;
+        border-radius: 8px;
+        left: 63%;
+        top: 73%;
+        animation-delay: -7s;
+        animation-duration: 9s;
+      }
+      .s4 {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        left: 11%;
+        top: 75%;
+        animation-delay: -2s;
+        animation-duration: 17s;
+      }
+      .s5 {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        left: 47%;
+        top: 7%;
+        animation-delay: -9s;
+        animation-duration: 11s;
+      }
+      .s6 {
+        width: 28px;
+        height: 56px;
+        border-radius: 8px;
+        left: 91%;
+        top: 54%;
+        animation-delay: -5s;
+        animation-duration: 14s;
+      }
+      @keyframes flt {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.5;
+        }
+        50% {
+          transform: translateY(-20px) rotate(11deg);
+          opacity: 0.9;
+        }
+      }
 
-/* ── SCREENS ── */
-.screen{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .65s ease,transform .65s ease}
-.screen.out{opacity:0;pointer-events:none;transform:scale(1.04)}
+      /* ── SCREENS ── */
+      .screen {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .screen.out {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.04);
+      }
 
-/* ── INTRO ── */
-#s-intro{z-index:2}
-.icard{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.15);border-radius:32px;padding:50px 54px;text-align:center;backdrop-filter:blur(28px);max-width:500px;width:90%;box-shadow:0 0 90px rgba(200,16,46,.13),0 0 55px rgba(123,79,212,.08),inset 0 1px 0 rgba(255,255,255,.12);animation:pop .9s ease both}
-@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+      /* ── INTRO ── */
+      #s-intro {
+        z-index: 2;
+      }
+      .icard {
+        background: rgba(255, 255, 255, 0.065);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 32px;
+        padding: 50px 54px;
+        text-align: center;
+        backdrop-filter: blur(28px);
+        max-width: 500px;
+        width: 90%;
+        box-shadow:
+          0 0 90px rgba(200, 16, 46, 0.13),
+          0 0 55px rgba(123, 79, 212, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        animation: pop 0.9s ease both;
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(22px) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
 
-/* spinning logo */
-.logowrap{width:90px;height:90px;margin:0 auto 26px;position:relative}
-.ring{position:absolute;inset:0;border-radius:50%;animation:spin 3s linear infinite}
-.ra{border:3px solid transparent;border-top-color:var(--red);border-right-color:var(--violet);filter:drop-shadow(0 0 6px rgba(200,16,46,.6));animation-duration:2.8s}
-.rb{inset:10px;border:2.5px solid transparent;border-top-color:var(--teal);border-left-color:var(--gold);animation-direction:reverse;animation-duration:2s;filter:drop-shadow(0 0 4px rgba(10,175,175,.5))}
-.rc{inset:20px;border:2px solid transparent;border-bottom-color:var(--mint);border-right-color:var(--rose);animation-duration:4s}
-.rcore{position:absolute;inset:28px;background:linear-gradient(135deg,var(--red),var(--red-d),var(--navy));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff}
-@keyframes spin{to{transform:rotate(360deg)}}
+      /* spinning logo */
+      .logowrap {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 26px;
+        position: relative;
+      }
+      .ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        animation: spin 3s linear infinite;
+      }
+      .ra {
+        border: 3px solid transparent;
+        border-top-color: var(--red);
+        border-right-color: var(--violet);
+        filter: drop-shadow(0 0 6px rgba(200, 16, 46, 0.6));
+        animation-duration: 2.8s;
+      }
+      .rb {
+        inset: 10px;
+        border: 2.5px solid transparent;
+        border-top-color: var(--teal);
+        border-left-color: var(--gold);
+        animation-direction: reverse;
+        animation-duration: 2s;
+        filter: drop-shadow(0 0 4px rgba(10, 175, 175, 0.5));
+      }
+      .rc {
+        inset: 20px;
+        border: 2px solid transparent;
+        border-bottom-color: var(--mint);
+        border-right-color: var(--rose);
+        animation-duration: 4s;
+      }
+      .rcore {
+        position: absolute;
+        inset: 28px;
+        background: linear-gradient(
+          135deg,
+          var(--red),
+          var(--red-d),
+          var(--navy)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 15px;
+        color: #fff;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-.ititle{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;line-height:1.1;color:#fff;letter-spacing:-.5px;margin-bottom:8px}
-.ititle .g{background:linear-gradient(90deg,var(--red),var(--violet),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.isub{font-size:13.5px;color:var(--t2);margin-bottom:26px;line-height:1.6}
-.badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:30px}
-.badge{font-size:11px;font-weight:500;padding:5px 13px;border-radius:20px;border:1px solid}
-.br{background:rgba(200,16,46,.15);border-color:rgba(200,16,46,.4);color:#FF8A96}
-.bt{background:rgba(10,175,175,.15);border-color:rgba(10,175,175,.4);color:#4DDEDE}
-.bv{background:rgba(123,79,212,.15);border-color:rgba(123,79,212,.4);color:#C4A4FF}
-.bg2{background:rgba(232,160,32,.15);border-color:rgba(232,160,32,.4);color:#FFD070}
-.lbtn{background:linear-gradient(135deg,var(--red),var(--red-d));border:none;border-radius:16px;padding:15px 48px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;letter-spacing:.3px;position:relative;overflow:hidden;box-shadow:0 6px 24px rgba(200,16,46,.45);transition:transform .2s,box-shadow .2s}
-.lbtn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(200,16,46,.55)}
-.lbtn:active{transform:scale(.97)}
-.lbtn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent);pointer-events:none}
-.ifooter{margin-top:22px;font-size:11px;color:rgba(255,255,255,.2)}
+      .ititle {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 36px;
+        line-height: 1.1;
+        color: #fff;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+      .ititle .g {
+        background: linear-gradient(
+          90deg,
+          var(--red),
+          var(--violet),
+          var(--teal)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .isub {
+        font-size: 13.5px;
+        color: var(--t2);
+        margin-bottom: 26px;
+        line-height: 1.6;
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .badge {
+        font-size: 11px;
+        font-weight: 500;
+        padding: 5px 13px;
+        border-radius: 20px;
+        border: 1px solid;
+      }
+      .br {
+        background: rgba(200, 16, 46, 0.15);
+        border-color: rgba(200, 16, 46, 0.4);
+        color: #ff8a96;
+      }
+      .bt {
+        background: rgba(10, 175, 175, 0.15);
+        border-color: rgba(10, 175, 175, 0.4);
+        color: #4ddede;
+      }
+      .bv {
+        background: rgba(123, 79, 212, 0.15);
+        border-color: rgba(123, 79, 212, 0.4);
+        color: #c4a4ff;
+      }
+      .bg2 {
+        background: rgba(232, 160, 32, 0.15);
+        border-color: rgba(232, 160, 32, 0.4);
+        color: #ffd070;
+      }
+      .lbtn {
+        background: linear-gradient(135deg, var(--red), var(--red-d));
+        border: none;
+        border-radius: 16px;
+        padding: 15px 48px;
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        cursor: pointer;
+        letter-spacing: 0.3px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 24px rgba(200, 16, 46, 0.45);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .lbtn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(200, 16, 46, 0.55);
+      }
+      .lbtn:active {
+        transform: scale(0.97);
+      }
+      .lbtn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.18),
+          transparent
+        );
+        pointer-events: none;
+      }
+      .ifooter {
+        margin-top: 22px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.2);
+      }
 
-/* ── CHAT SCREEN ── */
-#s-chat{align-items:stretch;justify-content:flex-start;z-index:1;background:rgba(8,13,30,.5)}
+      /* ── CHAT SCREEN ── */
+      #s-chat {
+        align-items: stretch;
+        justify-content: flex-start;
+        z-index: 1;
+        background: rgba(8, 13, 30, 0.5);
+      }
 
-/* topbar */
-.topbar{display:flex;align-items:center;gap:12px;padding:0 20px;height:60px;background:rgba(26,36,86,.78);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(24px);flex-shrink:0}
-.tlogo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--red),var(--red-d));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:#fff;box-shadow:0 2px 10px rgba(200,16,46,.45);flex-shrink:0}
-.tmeta{flex:1}
-.ttitle{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff}
-.tstatus{font-size:11px;color:var(--t2);display:flex;align-items:center;gap:5px;margin-top:1px}
-.ldot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pdot 2s infinite}
-@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
-.tright{display:flex;align-items:center;gap:8px}
-.tbtn{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .2s}
-.tbtn:hover{background:rgba(255,255,255,.13);color:#fff}
-.mbadge{font-size:10px;font-weight:700;font-family:'Syne',sans-serif;padding:4px 9px;border-radius:6px;background:linear-gradient(90deg,var(--red),var(--violet));color:#fff;letter-spacing:.4px}
+      /* topbar */
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 20px;
+        height: 60px;
+        background: rgba(26, 36, 86, 0.78);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(24px);
+        flex-shrink: 0;
+      }
+      .tlogo {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        background: linear-gradient(135deg, var(--red), var(--red-d));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 13px;
+        color: #fff;
+        box-shadow: 0 2px 10px rgba(200, 16, 46, 0.45);
+        flex-shrink: 0;
+      }
+      .tmeta {
+        flex: 1;
+      }
+      .ttitle {
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .tstatus {
+        font-size: 11px;
+        color: var(--t2);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 1px;
+      }
+      .ldot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #4ade80;
+        animation: pdot 2s infinite;
+      }
+      @keyframes pdot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.75);
+        }
+      }
+      .tright {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .tbtn {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+      .tbtn:hover {
+        background: rgba(255, 255, 255, 0.13);
+        color: #fff;
+      }
+      .mbadge {
+        font-size: 10px;
+        font-weight: 700;
+        font-family: "Syne", sans-serif;
+        padding: 4px 9px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, var(--red), var(--violet));
+        color: #fff;
+        letter-spacing: 0.4px;
+      }
 
-/* nav */
-.navtabs{display:flex;background:rgba(8,13,30,.65);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(12px);padding:0 20px;flex-shrink:0}
-.ntab{font-size:12px;font-weight:500;padding:9px 18px;color:rgba(255,255,255,.38);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;user-select:none}
-.ntab.on{color:#fff;border-bottom-color:var(--red)}
+      /* nav */
+      .navtabs {
+        display: flex;
+        background: rgba(8, 13, 30, 0.65);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        padding: 0 20px;
+        flex-shrink: 0;
+      }
+      .ntab {
+        font-size: 12px;
+        font-weight: 500;
+        padding: 9px 18px;
+        color: rgba(255, 255, 255, 0.38);
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s;
+        user-select: none;
+      }
+      .ntab.on {
+        color: #fff;
+        border-bottom-color: var(--red);
+      }
 
-/* messages */
-.msgs{flex:1;overflow-y:auto;padding:20px 20px 8px;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent}
-.msgs::-webkit-scrollbar{width:4px}
-.msgs::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-.mrow{display:flex;gap:10px;align-items:flex-end;max-width:100%}
-.mrow.u{flex-direction:row-reverse}
-.av{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:11px;font-weight:800}
-.av-ai{background:linear-gradient(135deg,var(--red),var(--red-d));color:#fff;box-shadow:0 2px 8px rgba(200,16,46,.35)}
-.av-u{background:rgba(123,79,212,.5);border:1px solid rgba(123,79,212,.4);color:#C4A4FF}
-.bub{max-width:78%;padding:12px 16px;border-radius:16px;font-size:13.5px;line-height:1.65}
-.bai{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.1);color:var(--t1);border-bottom-left-radius:4px;backdrop-filter:blur(12px)}
-.bu{background:linear-gradient(135deg,rgba(200,16,46,.55),rgba(123,79,212,.45));border:1px solid rgba(200,16,46,.3);color:#fff;border-bottom-right-radius:4px}
-.bub strong{font-weight:600;color:#fff}
-.bub ul{margin:8px 0 0 16px;line-height:1.9}
-.bub li{font-size:13px}
+      /* messages */
+      .msgs {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px 20px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+      }
+      .msgs::-webkit-scrollbar {
+        width: 4px;
+      }
+      .msgs::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+      }
+      .mrow {
+        display: flex;
+        gap: 10px;
+        align-items: flex-end;
+        max-width: 100%;
+      }
+      .mrow.u {
+        flex-direction: row-reverse;
+      }
+      .av {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+      }
+      .av-ai {
+        background: linear-gradient(135deg, var(--red), var(--red-d));
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(200, 16, 46, 0.35);
+      }
+      .av-u {
+        background: rgba(123, 79, 212, 0.5);
+        border: 1px solid rgba(123, 79, 212, 0.4);
+        color: #c4a4ff;
+      }
+      .bub {
+        max-width: 78%;
+        padding: 12px 16px;
+        border-radius: 16px;
+        font-size: 13.5px;
+        line-height: 1.65;
+      }
+      .bai {
+        background: rgba(255, 255, 255, 0.065);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--t1);
+        border-bottom-left-radius: 4px;
+        backdrop-filter: blur(12px);
+      }
+      .bu {
+        background: linear-gradient(
+          135deg,
+          rgba(200, 16, 46, 0.55),
+          rgba(123, 79, 212, 0.45)
+        );
+        border: 1px solid rgba(200, 16, 46, 0.3);
+        color: #fff;
+        border-bottom-right-radius: 4px;
+      }
+      .bub strong {
+        font-weight: 600;
+        color: #fff;
+      }
+      .bub ul {
+        margin: 8px 0 0 16px;
+        line-height: 1.9;
+      }
+      .bub li {
+        font-size: 13px;
+      }
 
-/* chips */
-.crow{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
-.chip{font-size:10px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid}
-.cd{background:rgba(200,16,46,.12);border-color:rgba(200,16,46,.3);color:#FF8A96}
-.cs{background:rgba(10,175,175,.12);border-color:rgba(10,175,175,.3);color:#4DDEDE}
-.cp{background:rgba(123,79,212,.12);border-color:rgba(123,79,212,.3);color:#C4A4FF}
-.cg{background:rgba(45,212,160,.12);border-color:rgba(45,212,160,.3);color:#6FFFCC}
+      /* chips */
+      .crow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 9px;
+      }
+      .chip {
+        font-size: 10px;
+        font-weight: 500;
+        padding: 3px 9px;
+        border-radius: 12px;
+        border: 1px solid;
+      }
+      .cd {
+        background: rgba(200, 16, 46, 0.12);
+        border-color: rgba(200, 16, 46, 0.3);
+        color: #ff8a96;
+      }
+      .cs {
+        background: rgba(10, 175, 175, 0.12);
+        border-color: rgba(10, 175, 175, 0.3);
+        color: #4ddede;
+      }
+      .cp {
+        background: rgba(123, 79, 212, 0.12);
+        border-color: rgba(123, 79, 212, 0.3);
+        color: #c4a4ff;
+      }
+      .cg {
+        background: rgba(45, 212, 160, 0.12);
+        border-color: rgba(45, 212, 160, 0.3);
+        color: #6fffcc;
+      }
 
-/* score bar */
-.srow{display:flex;align-items:center;gap:7px;margin-top:6px}
-.slb{font-size:10px;color:var(--t3)}
-.str{flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
-.sfl{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--mint))}
+      /* score bar */
+      .srow {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 6px;
+      }
+      .slb {
+        font-size: 10px;
+        color: var(--t3);
+      }
+      .str {
+        flex: 1;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .sfl {
+        height: 100%;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--teal), var(--mint));
+      }
 
-/* typing */
-.trow{display:flex;gap:10px;align-items:flex-end}
-.tbub{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.1);border-radius:16px;border-bottom-left-radius:4px;padding:13px 18px;display:flex;gap:5px;align-items:center;backdrop-filter:blur(12px)}
-.td{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.38);animation:bnc 1.3s infinite}
-.td:nth-child(2){animation-delay:.18s}.td:nth-child(3){animation-delay:.36s}
-@keyframes bnc{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:1}}
+      /* typing */
+      .trow {
+        display: flex;
+        gap: 10px;
+        align-items: flex-end;
+      }
+      .tbub {
+        background: rgba(255, 255, 255, 0.065);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        border-bottom-left-radius: 4px;
+        padding: 13px 18px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        backdrop-filter: blur(12px);
+      }
+      .td {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.38);
+        animation: bnc 1.3s infinite;
+      }
+      .td:nth-child(2) {
+        animation-delay: 0.18s;
+      }
+      .td:nth-child(3) {
+        animation-delay: 0.36s;
+      }
+      @keyframes bnc {
+        0%,
+        60%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.35;
+        }
+        30% {
+          transform: translateY(-5px);
+          opacity: 1;
+        }
+      }
 
-/* input */
-.inpzone{padding:12px 16px;background:rgba(8,13,30,.78);border-top:1px solid rgba(255,255,255,.07);backdrop-filter:blur(24px);display:flex;align-items:flex-end;gap:10px;flex-shrink:0}
-.inpw{flex:1;position:relative}
-.inp{width:100%;background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:11px 16px;font-size:13.5px;font-family:'DM Sans',sans-serif;color:var(--t1);outline:none;resize:none;line-height:1.5;max-height:120px;transition:border-color .2s}
-.inp::placeholder{color:rgba(255,255,255,.22)}
-.inp:focus{border-color:rgba(200,16,46,.45);background:rgba(255,255,255,.08)}
-.sbtn{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--red),var(--red-d));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 12px rgba(200,16,46,.45);transition:transform .2s,box-shadow .2s}
-.sbtn:hover{transform:scale(1.06);box-shadow:0 6px 18px rgba(200,16,46,.55)}
-.sbtn:active{transform:scale(.95)}
-.sbtn svg{width:15px;height:15px;fill:#fff}
+      /* input */
+      .inpzone {
+        padding: 12px 16px;
+        background: rgba(8, 13, 30, 0.78);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(24px);
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .inpw {
+        flex: 1;
+        position: relative;
+      }
+      .inp {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.065);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 11px 16px;
+        font-size: 13.5px;
+        font-family: "DM Sans", sans-serif;
+        color: var(--t1);
+        outline: none;
+        resize: none;
+        line-height: 1.5;
+        max-height: 120px;
+        transition: border-color 0.2s;
+      }
+      .inp::placeholder {
+        color: rgba(255, 255, 255, 0.22);
+      }
+      .inp:focus {
+        border-color: rgba(200, 16, 46, 0.45);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .sbtn {
+        width: 42px;
+        height: 42px;
+        border-radius: 13px;
+        background: linear-gradient(135deg, var(--red), var(--red-d));
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 3px 12px rgba(200, 16, 46, 0.45);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .sbtn:hover {
+        transform: scale(1.06);
+        box-shadow: 0 6px 18px rgba(200, 16, 46, 0.55);
+      }
+      .sbtn:active {
+        transform: scale(0.95);
+      }
+      .sbtn svg {
+        width: 15px;
+        height: 15px;
+        fill: #fff;
+      }
 
-/* panels */
-#p-chat{flex:1;display:flex;flex-direction:column;min-height:0}
-#p-chat.hide,#p-docs.hide,#p-hist.hide{display:none}
-#p-docs,#p-hist{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent}
-.ph{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
-.ps{font-size:12px;color:var(--t2);margin-bottom:10px}
-.dcard{background:var(--glass);border:1px solid var(--gborder);border-radius:14px;padding:14px 16px;backdrop-filter:blur(10px)}
-.dtitle{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#fff;margin-bottom:5px}
-.dbody{font-size:12px;color:var(--t2);line-height:1.6}
-.dsrow{display:flex;align-items:center;gap:8px;margin-top:8px}
-.dsl{font-size:10px;color:var(--t3)}
-.dtr{flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
-.dfl{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--violet),var(--teal))}
-.hitem{background:var(--glass);border:1px solid var(--gborder);border-radius:12px;padding:12px 14px;cursor:pointer;transition:all .2s;backdrop-filter:blur(8px)}
-.hitem:hover{background:rgba(255,255,255,.1);border-color:rgba(200,16,46,.3)}
-.hq{font-size:13px;color:#fff;margin-bottom:3px}
-.ht{font-size:10px;color:var(--t3)}
-.empty{font-size:13px;color:var(--t3);text-align:center;padding:40px 0}
+      /* panels */
+      #p-chat {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      #p-chat.hide,
+      #p-docs.hide,
+      #p-hist.hide {
+        display: none;
+      }
+      #p-docs,
+      #p-hist {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+      }
+      .ph {
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 3px;
+      }
+      .ps {
+        font-size: 12px;
+        color: var(--t2);
+        margin-bottom: 10px;
+      }
+      .dcard {
+        background: var(--glass);
+        border: 1px solid var(--gborder);
+        border-radius: 14px;
+        padding: 14px 16px;
+        backdrop-filter: blur(10px);
+      }
+      .dtitle {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+      .dbody {
+        font-size: 12px;
+        color: var(--t2);
+        line-height: 1.6;
+      }
+      .dsrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .dsl {
+        font-size: 10px;
+        color: var(--t3);
+      }
+      .dtr {
+        flex: 1;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .dfl {
+        height: 100%;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--violet), var(--teal));
+      }
+      .hitem {
+        background: var(--glass);
+        border: 1px solid var(--gborder);
+        border-radius: 12px;
+        padding: 12px 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+        backdrop-filter: blur(8px);
+      }
+      .hitem:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(200, 16, 46, 0.3);
+      }
+      .hq {
+        font-size: 13px;
+        color: #fff;
+        margin-bottom: 3px;
+      }
+      .ht {
+        font-size: 10px;
+        color: var(--t3);
+      }
+      .empty {
+        font-size: 13px;
+        color: var(--t3);
+        text-align: center;
+        padding: 40px 0;
+      }
 
-/* footer */
-.footer{display:flex;align-items:center;justify-content:space-between;padding:7px 20px;background:rgba(26,36,86,.72);border-top:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);flex-shrink:0}
-.fl{font-size:10px;color:rgba(255,255,255,.28)}
-.fr{display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.35)}
-.ftag{background:linear-gradient(90deg,var(--red),var(--violet));border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;font-family:'Syne',sans-serif;color:#fff;letter-spacing:.5px}
-</style>
-</head>
-<body>
-
-<!-- BG -->
-<div class="bg">
-  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-  <div class="orb o4"></div><div class="orb o5"></div>
-  <div class="grid"></div>
-  <div class="shapes">
-    <div class="sh s1"></div><div class="sh s2"></div><div class="sh s3"></div>
-    <div class="sh s4"></div><div class="sh s5"></div><div class="sh s6"></div>
-  </div>
-</div>
-
-<!-- ════ INTRO ════ -->
-<div class="screen" id="s-intro">
-  <div class="icard">
-    <div class="logowrap">
-      <div class="ring ra"></div><div class="ring rb"></div><div class="ring rc"></div>
-      <div class="rcore">AC</div>
+      /* footer */
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 20px;
+        background: rgba(26, 36, 86, 0.72);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(10px);
+        flex-shrink: 0;
+      }
+      .fl {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.28);
+      }
+      .fr {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .ftag {
+        background: linear-gradient(90deg, var(--red), var(--violet));
+        border-radius: 4px;
+        padding: 2px 7px;
+        font-size: 9px;
+        font-weight: 700;
+        font-family: "Syne", sans-serif;
+        color: #fff;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BG -->
+    <div class="bg">
+      <div class="orb o1"></div>
+      <div class="orb o2"></div>
+      <div class="orb o3"></div>
+      <div class="orb o4"></div>
+      <div class="orb o5"></div>
+      <div class="grid"></div>
+      <div class="shapes">
+        <div class="sh s1"></div>
+        <div class="sh s2"></div>
+        <div class="sh s3"></div>
+        <div class="sh s4"></div>
+        <div class="sh s5"></div>
+        <div class="sh s6"></div>
+      </div>
     </div>
-    <div class="ititle">ACity<br><span class="g">Assistant</span></div>
-    <div class="isub">Your AI-powered academic helper for<br>Academic City University College, Ghana</div>
-    <div class="badges">
-      <span class="badge br">RAG-Powered</span>
-      <span class="badge bt">Ghana Budget 2025</span>
-      <span class="badge bv">Election Data</span>
-      <span class="badge bg2">CS4241 Project</span>
+
+    <!-- ════ INTRO ════ -->
+    <div class="screen" id="s-intro">
+      <div class="icard">
+        <div class="logowrap">
+          <div class="ring ra"></div>
+          <div class="ring rb"></div>
+          <div class="ring rc"></div>
+          <div class="rcore">AC</div>
+        </div>
+        <div class="ititle">ACity<br /><span class="g">Assistant</span></div>
+        <div class="isub">
+          Your AI-powered academic helper for<br />Academic City University,
+          Ghana
+        </div>
+        <div class="badges">
+          <span class="badge br">RAG-Powered</span>
+          <span class="badge bt">Ghana Budget 2025</span>
+          <span class="badge bv">Election Data</span>
+          <span class="badge bg2">CS4241 Project</span>
+        </div>
+        <button class="lbtn" id="btn-launch">Launch Assistant</button>
+        <div class="ifooter">
+          Academic City University · Accra, Ghana · CS4241 Project
+        </div>
+      </div>
     </div>
-    <button class="lbtn" id="btn-launch">Launch Assistant</button>
-    <div class="ifooter">Academic City University College · Accra, Ghana · CS4241 Project</div>
-  </div>
-</div>
 
-<!-- ════ CHAT ════ -->
-<div class="screen out" id="s-chat" style="align-items:stretch;justify-content:flex-start">
+    <!-- ════ CHAT ════ -->
+    <div
+      class="screen out"
+      id="s-chat"
+      style="align-items: stretch; justify-content: flex-start"
+    >
+      <div class="topbar">
+        <div class="tlogo">AC</div>
+        <div class="tmeta">
+          <div class="ttitle">ACity Assistant</div>
+          <div class="tstatus">
+            <div class="ldot"></div>
+            <span id="stat">Online · Ready</span>
+          </div>
+        </div>
+        <div class="tright">
+          <div class="mbadge">RAG · Local</div>
+          <div class="tbtn" id="btn-back">&#8592;</div>
+          <div class="tbtn" id="btn-clear" title="Clear">&#10005;</div>
+        </div>
+      </div>
 
-  <div class="topbar">
-    <div class="tlogo">AC</div>
-    <div class="tmeta">
-      <div class="ttitle">ACity Assistant</div>
-      <div class="tstatus"><div class="ldot"></div><span id="stat">Online · Ready</span></div>
+      <div class="navtabs">
+        <div class="ntab on" data-p="chat">Chat</div>
+        <div class="ntab" data-p="docs">Retrieved Chunks</div>
+        <div class="ntab" data-p="hist">History</div>
+      </div>
+
+      <div id="p-chat">
+        <div class="msgs" id="msgs"></div>
+      </div>
+
+      <div id="p-docs" class="hide">
+        <div class="ph">Retrieved Context Chunks</div>
+        <div class="ps">
+          Top chunks matched to your last query, ranked by similarity score.
+        </div>
+        <div id="docs-inner">
+          <div class="empty">Send a message to see retrieved chunks here.</div>
+        </div>
+      </div>
+
+      <div id="p-hist" class="hide">
+        <div class="ph">Query History</div>
+        <div class="ps">All queries this session.</div>
+        <div id="hist-inner"><div class="empty">No history yet.</div></div>
+      </div>
+
+      <div class="inpzone">
+        <div class="inpw">
+          <textarea
+            class="inp"
+            id="inp"
+            rows="1"
+            placeholder="Ask about ACity, Ghana Budget 2025, election results..."
+          ></textarea>
+        </div>
+        <button class="sbtn" id="btn-send">
+          <svg viewBox="0 0 24 24">
+            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="footer">
+        <div class="fl">Academic City University · Accra, Ghana</div>
+        <div class="fc">© 2026 Esther Ilori-Folarin. All Rights Reserved.</div>
+        <div class="fr">
+          <div class="ftag">RAG</div>
+          Local Knowledge Base · CS4241 Exam Project
+        </div>
+      </div>
     </div>
-    <div class="tright">
-      <div class="mbadge">RAG · Local</div>
-      <div class="tbtn" id="btn-back">&#8592;</div>
-      <div class="tbtn" id="btn-clear" title="Clear">&#10005;</div>
-    </div>
-  </div>
 
-  <div class="navtabs">
-    <div class="ntab on" data-p="chat">Chat</div>
-    <div class="ntab" data-p="docs">Retrieved Chunks</div>
-    <div class="ntab" data-p="hist">History</div>
-  </div>
+    <script>
+      // ═══════════════════════════════════════════════════════════════════
+      //  ACITY ASSISTANT : NO-API-KEY RAG PROTOTYPE
+      //  All data is embedded directly from the two source documents:
+      //  1. Ghana_Election_Result.csv  (GitHub: GodwinDansoAcity/acitydataset)
+      //  2. 2025-Budget-Statement-and-Economic-Policy_v4.pdf (mofep.gov.gh)
+      // ═══════════════════════════════════════════════════════════════════
 
-  <div id="p-chat">
-    <div class="msgs" id="msgs"></div>
-  </div>
+      // ── KNOWLEDGE BASE ────────────────────────────────────────────────
+      // Every chunk is sourced directly from the two provided documents.
+      // Source A = Ghana_Election_Result.csv
+      // Source B = 2025-Budget-Statement-and-Economic-Policy_v4.pdf
 
-  <div id="p-docs" class="hide">
-    <div class="ph">Retrieved Context Chunks</div>
-    <div class="ps">Top chunks matched to your last query, ranked by similarity score.</div>
-    <div id="docs-inner"><div class="empty">Send a message to see retrieved chunks here.</div></div>
-  </div>
+      const KB = [
+        // ════ SOURCE A: Ghana_Election_Result.csv ════
 
-  <div id="p-hist" class="hide">
-    <div class="ph">Query History</div>
-    <div class="ps">All queries this session.</div>
-    <div id="hist-inner"><div class="empty">No history yet.</div></div>
-  </div>
+        {
+          id: "el1",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · 2024 Presidential",
+          text: "In the 2024 Ghana Presidential Election, John Dramani Mahama of the National Democratic Congress (NDC) won with 56.55% of valid votes cast (6,328,625 votes). Mahamudu Bawumia of the New Patriotic Party (NPP) received 41.61% (4,657,304 votes). Alan Kyerematen (Independent) got 0.56%, and Nana Akosua Frema Osei-Opare (CPP) received 0.06%. Total valid votes cast were 11,196,241 out of 17,866,584 registered voters, giving a turnout of approximately 60.88%.",
+          kw: [
+            "2024",
+            "presidential",
+            "election",
+            "mahama",
+            "bawumia",
+            "ndc",
+            "npp",
+            "winner",
+            "votes",
+            "results",
+            "turnout",
+            "kyerematen",
+          ],
+        },
 
-  <div class="inpzone">
-    <div class="inpw">
-      <textarea class="inp" id="inp" rows="1" placeholder="Ask about ACity, Ghana Budget 2025, election results..."></textarea>
-    </div>
-    <button class="sbtn" id="btn-send">
-      <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
-    </button>
-  </div>
+        {
+          id: "el2",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · 2024 Parliamentary",
+          text: "The 2024 Ghanaian parliamentary election produced a historic result: the NDC won 183 seats, the NPP won 88 seats, and independent candidates won 4 seats in the 275-member Parliament of Ghana. This gave the NDC a dominant parliamentary majority, a significant swing from the previous parliament where seats were almost evenly split between the two parties.",
+          kw: [
+            "2024",
+            "parliament",
+            "seats",
+            "ndc",
+            "npp",
+            "legislative",
+            "independent",
+            "majority",
+            "constituencies",
+          ],
+        },
 
-  <div class="footer">
-    <div class="fl">Academic City University College · Accra, Ghana</div>
-    <div class="fr"><div class="ftag">RAG</div> Local Knowledge Base · CS4241 Exam Project</div>
-  </div>
-</div>
+        {
+          id: "el3",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · 2020 Presidential",
+          text: "In the 2020 Ghana Presidential Election, incumbent Nana Addo Dankwa Akufo-Addo (NPP) won re-election with 51.59% of valid votes (6,730,413 votes). John Dramani Mahama (NDC) received 47.36% (6,214,889 votes). The Electoral Commission declared the results on December 9, 2020. Voter turnout was approximately 79% of 17,027,286 registered voters. Mahama and the NDC disputed the results, though the Supreme Court dismissed the petition.",
+          kw: [
+            "2020",
+            "akufo-addo",
+            "mahama",
+            "ndc",
+            "npp",
+            "election",
+            "presidential",
+            "turnout",
+            "dispute",
+            "petition",
+          ],
+        },
 
-<script>
-// ═══════════════════════════════════════════════════════════════════
-//  ACITY ASSISTANT : NO-API-KEY RAG PROTOTYPE
-//  All data is embedded directly from the two source documents:
-//  1. Ghana_Election_Result.csv  (GitHub: GodwinDansoAcity/acitydataset)
-//  2. 2025-Budget-Statement-and-Economic-Policy_v4.pdf (mofep.gov.gh)
-// ═══════════════════════════════════════════════════════════════════
+        {
+          id: "el4",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · 2020 Parliamentary",
+          text: "The 2020 parliamentary elections resulted in the NPP winning 137 seats and the NDC winning 137 seats : a near-even split of the 275-seat Parliament. Independent candidates won 1 seat. This created a hung parliament where the NPP retained a marginal advantage only due to the Vice President's casting vote. It was described as the most competitive parliamentary election in Ghana's Fourth Republic.",
+          kw: [
+            "2020",
+            "parliament",
+            "seats",
+            "hung",
+            "ndc",
+            "npp",
+            "split",
+            "competitive",
+            "fourth republic",
+          ],
+        },
 
-// ── KNOWLEDGE BASE ────────────────────────────────────────────────
-// Every chunk is sourced directly from the two provided documents.
-// Source A = Ghana_Election_Result.csv
-// Source B = 2025-Budget-Statement-and-Economic-Policy_v4.pdf
+        {
+          id: "el5",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · 2016 Presidential",
+          text: "In the 2016 Ghana Presidential Election, Nana Addo Dankwa Akufo-Addo (NPP) won with 53.85% of valid votes against incumbent John Dramani Mahama (NDC) who received 44.40%. This was Akufo-Addo's third presidential bid. Voter turnout was approximately 68.60%. The NPP also won a majority in parliament with 169 seats to the NDC's 106 seats.",
+          kw: [
+            "2016",
+            "akufo-addo",
+            "mahama",
+            "ndc",
+            "npp",
+            "election",
+            "presidential",
+            "turnout",
+            "parliament",
+          ],
+        },
 
-const KB = [
+        {
+          id: "el6",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · Regional Breakdown 2024",
+          text: "In the 2024 elections, Mahama and the NDC won all regions in the Northern, Volta, Central and Western belts. The NPP retained some strength in the Ashanti Region, which has historically been their stronghold, but with a reduced margin. The Eastern Region, traditionally split, swung toward the NDC. The Greater Accra Region, home to the capital, voted for the NDC with over 55% of votes.",
+          kw: [
+            "region",
+            "ashanti",
+            "volta",
+            "accra",
+            "northern",
+            "eastern",
+            "central",
+            "western",
+            "stronghold",
+            "breakdown",
+            "regional",
+          ],
+        },
 
-  // ════ SOURCE A: Ghana_Election_Result.csv ════
+        {
+          id: "el7",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · Voting Trends",
+          text: "Ghana's election history from 1992 to 2024 shows consistent democratic alternation of power between the NDC and NPP. The NDC was founded by Jerry John Rawlings and has won presidential elections in 1992, 1996, 2008, 2012, and 2024. The NPP has won in 2000, 2004, 2016, and 2020. Ghana is widely regarded as one of Africa's most stable multiparty democracies, with peaceful transfers of power.",
+          kw: [
+            "history",
+            "trend",
+            "rawlings",
+            "alternation",
+            "democracy",
+            "fourth republic",
+            "1992",
+            "1996",
+            "2000",
+            "2004",
+            "2008",
+            "2012",
+            "peaceful",
+          ],
+        },
 
-  {id:"el1", src:"Ghana_Election_Result.csv", cat:"Election · 2024 Presidential",
-   text:"In the 2024 Ghana Presidential Election, John Dramani Mahama of the National Democratic Congress (NDC) won with 56.55% of valid votes cast (6,328,625 votes). Mahamudu Bawumia of the New Patriotic Party (NPP) received 41.61% (4,657,304 votes). Alan Kyerematen (Independent) got 0.56%, and Nana Akosua Frema Osei-Opare (CPP) received 0.06%. Total valid votes cast were 11,196,241 out of 17,866,584 registered voters, giving a turnout of approximately 60.88%.",
-   kw:["2024","presidential","election","mahama","bawumia","ndc","npp","winner","votes","results","turnout","kyerematen"]},
+        {
+          id: "el8",
+          src: "Ghana_Election_Result.csv",
+          cat: "Election · Electoral Commission",
+          text: "The Electoral Commission of Ghana (EC) is the independent constitutional body responsible for conducting all public elections. It is chaired by the Chairperson of the Electoral Commission. The 2024 elections were administered by the EC under Chairperson Jean Mensa. The EC announced results from over 38,000 polling stations across all 16 regions and 275 constituencies of Ghana.",
+          kw: [
+            "electoral commission",
+            "ec",
+            "jean mensa",
+            "polling",
+            "constituencies",
+            "regions",
+            "administration",
+            "chairperson",
+          ],
+        },
 
-  {id:"el2", src:"Ghana_Election_Result.csv", cat:"Election · 2024 Parliamentary",
-   text:"The 2024 Ghanaian parliamentary election produced a historic result: the NDC won 183 seats, the NPP won 88 seats, and independent candidates won 4 seats in the 275-member Parliament of Ghana. This gave the NDC a dominant parliamentary majority, a significant swing from the previous parliament where seats were almost evenly split between the two parties.",
-   kw:["2024","parliament","seats","ndc","npp","legislative","independent","majority","constituencies"]},
+        // ════ SOURCE B: 2025-Budget-Statement-and-Economic-Policy_v4.pdf ════
 
-  {id:"el3", src:"Ghana_Election_Result.csv", cat:"Election · 2020 Presidential",
-   text:"In the 2020 Ghana Presidential Election, incumbent Nana Addo Dankwa Akufo-Addo (NPP) won re-election with 51.59% of valid votes (6,730,413 votes). John Dramani Mahama (NDC) received 47.36% (6,214,889 votes). The Electoral Commission declared the results on December 9, 2020. Voter turnout was approximately 79% of 17,027,286 registered voters. Mahama and the NDC disputed the results, though the Supreme Court dismissed the petition.",
-   kw:["2020","akufo-addo","mahama","ndc","npp","election","presidential","turnout","dispute","petition"]},
+        {
+          id: "bu1",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Macroeconomic Overview",
+          page: 12,
+          text: "Ghana's GDP growth is projected at 4.0% for 2025, recovering from 2.9% in 2024. The total budget size is GH₵ 214.6 billion. Total revenue and grants are projected at GH₵ 152.7 billion (14.7% of GDP). Total expenditure is projected at GH₵ 214.6 billion (20.7% of GDP). The fiscal deficit target is 4.0% of GDP, significantly down from 7.3% in the prior year. The primary balance target is a surplus of 1.5% of GDP, reflecting Ghana's ongoing IMF Extended Credit Facility programme commitments.",
+          kw: [
+            "gdp",
+            "growth",
+            "fiscal",
+            "deficit",
+            "revenue",
+            "imf",
+            "economy",
+            "budget",
+            "surplus",
+            "primary balance",
+            "2025",
+            "macro",
+          ],
+        },
 
-  {id:"el4", src:"Ghana_Election_Result.csv", cat:"Election · 2020 Parliamentary",
-   text:"The 2020 parliamentary elections resulted in the NPP winning 137 seats and the NDC winning 137 seats : a near-even split of the 275-seat Parliament. Independent candidates won 1 seat. This created a hung parliament where the NPP retained a marginal advantage only due to the Vice President's casting vote. It was described as the most competitive parliamentary election in Ghana's Fourth Republic.",
-   kw:["2020","parliament","seats","hung","ndc","npp","split","competitive","fourth republic"]},
+        {
+          id: "bu2",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Education Sector",
+          page: 87,
+          text: "The education sector received a total allocation of GH₵ 21.4 billion in the 2025 Budget, representing approximately 15.2% of total government expenditure. This is the single largest sectoral allocation. Key components include: Ghana Education Trust Fund (GETFund) : GH₵ 4.2 billion; Free Senior High School (FSHS) programme : GH₵ 3.8 billion; Basic education capitation grant : GH₵ 1.1 billion; Tertiary education and university infrastructure : GH₵ 2.6 billion; Technical and Vocational Education and Training (TVET) : GH₵ 1.3 billion. The government plans to build 200 new basic school infrastructure units and rehabilitate 500 existing structures.",
+          kw: [
+            "education",
+            "budget",
+            "getfund",
+            "shs",
+            "free shs",
+            "tertiary",
+            "university",
+            "tvet",
+            "allocation",
+            "schools",
+            "capitation",
+            "billion",
+          ],
+        },
 
-  {id:"el5", src:"Ghana_Election_Result.csv", cat:"Election · 2016 Presidential",
-   text:"In the 2016 Ghana Presidential Election, Nana Addo Dankwa Akufo-Addo (NPP) won with 53.85% of valid votes against incumbent John Dramani Mahama (NDC) who received 44.40%. This was Akufo-Addo's third presidential bid. Voter turnout was approximately 68.60%. The NPP also won a majority in parliament with 169 seats to the NDC's 106 seats.",
-   kw:["2016","akufo-addo","mahama","ndc","npp","election","presidential","turnout","parliament"]},
+        {
+          id: "bu3",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Health Sector",
+          page: 112,
+          text: "The health sector received GH₵ 7.2 billion in the 2025 Budget. Priority areas include: National Health Insurance Authority (NHIA) : GH₵ 2.1 billion; Agenda 111 (district hospitals) : GH₵ 1.8 billion for completing 27 district hospitals; Primary healthcare and community health centres : GH₵ 1.2 billion; Medicines and medical supplies : GH₵ 900 million; Mental health facilities : GH₵ 200 million. The government targets increasing health insurance coverage to 50% of the population by end of 2025.",
+          kw: [
+            "health",
+            "nhia",
+            "hospital",
+            "agenda 111",
+            "insurance",
+            "community",
+            "district",
+            "medicines",
+            "mental",
+            "coverage",
+            "billion",
+          ],
+        },
 
-  {id:"el6", src:"Ghana_Election_Result.csv", cat:"Election · Regional Breakdown 2024",
-   text:"In the 2024 elections, Mahama and the NDC won all regions in the Northern, Volta, Central and Western belts. The NPP retained some strength in the Ashanti Region, which has historically been their stronghold, but with a reduced margin. The Eastern Region, traditionally split, swung toward the NDC. The Greater Accra Region, home to the capital, voted for the NDC with over 55% of votes.",
-   kw:["region","ashanti","volta","accra","northern","eastern","central","western","stronghold","breakdown","regional"]},
+        {
+          id: "bu4",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Public Debt",
+          page: 45,
+          text: "Ghana's total public debt stood at GH₵ 721 billion (approximately USD 48 billion) as of end-2024, representing about 65.6% of GDP, down from 88.1% at the peak of the debt crisis in 2022. The 2025 Budget targets a further reduction to below 60% of GDP by end of 2025 through the Domestic Debt Exchange Programme (DDEP), external debt restructuring, and fiscal consolidation. IMF support under the Extended Credit Facility amounts to USD 3 billion over 36 months.",
+          kw: [
+            "debt",
+            "public debt",
+            "imf",
+            "ddep",
+            "gdp",
+            "billion",
+            "exchange",
+            "credit",
+            "restructuring",
+            "fiscal",
+            "usd",
+            "consolidation",
+          ],
+        },
 
-  {id:"el7", src:"Ghana_Election_Result.csv", cat:"Election · Voting Trends",
-   text:"Ghana's election history from 1992 to 2024 shows consistent democratic alternation of power between the NDC and NPP. The NDC was founded by Jerry John Rawlings and has won presidential elections in 1992, 1996, 2008, 2012, and 2024. The NPP has won in 2000, 2004, 2016, and 2020. Ghana is widely regarded as one of Africa's most stable multiparty democracies, with peaceful transfers of power.",
-   kw:["history","trend","rawlings","alternation","democracy","fourth republic","1992","1996","2000","2004","2008","2012","peaceful"]},
+        {
+          id: "bu5",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Revenue Measures",
+          page: 32,
+          text: "The 2025 Budget introduces several revenue enhancement measures: (1) Electronic Levy (E-Levy) rate revised downward to 0.5% on electronic transactions; (2) Introduction of a 5% levy on betting and gaming winnings; (3) Growth and Sustainability Levy on mining companies extended for 2 additional years; (4) Corporate income tax for small and medium enterprises reduced to 20%; (5) Value Added Tax (VAT) threshold raised to GH₵ 500,000 annual turnover; (6) Tax exemptions on locally manufactured goods expanded. Total domestic revenue target is GH₵ 135.2 billion.",
+          kw: [
+            "revenue",
+            "e-levy",
+            "vat",
+            "tax",
+            "levy",
+            "sme",
+            "corporate",
+            "mining",
+            "domestic",
+            "electronic",
+            "betting",
+            "sustainability",
+          ],
+        },
 
-  {id:"el8", src:"Ghana_Election_Result.csv", cat:"Election · Electoral Commission",
-   text:"The Electoral Commission of Ghana (EC) is the independent constitutional body responsible for conducting all public elections. It is chaired by the Chairperson of the Electoral Commission. The 2024 elections were administered by the EC under Chairperson Jean Mensa. The EC announced results from over 38,000 polling stations across all 16 regions and 275 constituencies of Ghana.",
-   kw:["electoral commission","ec","jean mensa","polling","constituencies","regions","administration","chairperson"]},
+        {
+          id: "bu6",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Infrastructure & Roads",
+          page: 134,
+          text: "Infrastructure and roads received GH₵ 9.1 billion in the 2025 Budget. Flagship projects include: Accra-Tema Motorway Extension Phase II : GH₵ 1.4 billion; Rehabilitation of 4,500 km of feeder roads nationwide : GH₵ 2.2 billion; Accra Inner City Roads rehabilitation : GH₵ 800 million; Kumasi Urban Roads : GH₵ 600 million; Continuation of the 1-District-1-Factory programme targeting 40 new factories : GH₵ 1.1 billion. The government also committed to completing stalled government projects inherited from the previous administration.",
+          kw: [
+            "infrastructure",
+            "roads",
+            "motorway",
+            "factory",
+            "construction",
+            "accra",
+            "tema",
+            "kumasi",
+            "feeder",
+            "district",
+            "rehab",
+          ],
+        },
 
-  // ════ SOURCE B: 2025-Budget-Statement-and-Economic-Policy_v4.pdf ════
+        {
+          id: "bu7",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Agriculture Sector",
+          page: 98,
+          text: "The agriculture sector was allocated GH₵ 3.8 billion in 2025, focused on: Planting for Food and Jobs (PFJ) Phase II : GH₵ 1.2 billion; Cocoa sector support (COCOBOD) : GH₵ 900 million; Irrigation infrastructure development : GH₵ 600 million; Fertiliser and seed subsidy programme : GH₵ 400 million; Livestock and poultry development : GH₵ 300 million. The government targets a 5% growth in agricultural GDP and aims to make Ghana self-sufficient in rice production by 2027.",
+          kw: [
+            "agriculture",
+            "farming",
+            "cocoa",
+            "cocobod",
+            "planting",
+            "pfj",
+            "food",
+            "irrigation",
+            "fertiliser",
+            "rice",
+            "livestock",
+            "sector",
+          ],
+        },
 
-  {id:"bu1", src:"2025-Budget-Statement.pdf", cat:"Budget · Macroeconomic Overview", page:12,
-   text:"Ghana's GDP growth is projected at 4.0% for 2025, recovering from 2.9% in 2024. The total budget size is GH₵ 214.6 billion. Total revenue and grants are projected at GH₵ 152.7 billion (14.7% of GDP). Total expenditure is projected at GH₵ 214.6 billion (20.7% of GDP). The fiscal deficit target is 4.0% of GDP, significantly down from 7.3% in the prior year. The primary balance target is a surplus of 1.5% of GDP, reflecting Ghana's ongoing IMF Extended Credit Facility programme commitments.",
-   kw:["gdp","growth","fiscal","deficit","revenue","imf","economy","budget","surplus","primary balance","2025","macro"]},
+        {
+          id: "bu8",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Energy Sector",
+          page: 148,
+          text: "The energy sector received GH₵ 4.5 billion in 2025. Key priorities: Power generation capacity : GH₵ 1.6 billion towards adding 500 MW of renewable energy; Ghana Grid Company (GRIDCo) transmission infrastructure : GH₵ 800 million; Electrification of remaining communities under the Self-Help Electrification Programme (SHEP) : GH₵ 500 million; LPG cylinder promotion programme : GH₵ 300 million. The government targets 10% renewable energy in the national grid by end of 2025. Power sector debt to IPPs stands at approximately USD 2.1 billion.",
+          kw: [
+            "energy",
+            "power",
+            "electricity",
+            "renewable",
+            "gridco",
+            "shep",
+            "lpg",
+            "ipp",
+            "generation",
+            "transmission",
+            "megawatt",
+            "sector",
+          ],
+        },
 
-  {id:"bu2", src:"2025-Budget-Statement.pdf", cat:"Budget · Education Sector", page:87,
-   text:"The education sector received a total allocation of GH₵ 21.4 billion in the 2025 Budget, representing approximately 15.2% of total government expenditure. This is the single largest sectoral allocation. Key components include: Ghana Education Trust Fund (GETFund) : GH₵ 4.2 billion; Free Senior High School (FSHS) programme : GH₵ 3.8 billion; Basic education capitation grant : GH₵ 1.1 billion; Tertiary education and university infrastructure : GH₵ 2.6 billion; Technical and Vocational Education and Training (TVET) : GH₵ 1.3 billion. The government plans to build 200 new basic school infrastructure units and rehabilitate 500 existing structures.",
-   kw:["education","budget","getfund","shs","free shs","tertiary","university","tvet","allocation","schools","capitation","billion"]},
+        {
+          id: "bu9",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Social Protection",
+          page: 165,
+          text: "Social protection programmes received GH₵ 5.6 billion in 2025. Key programmes include: Livelihood Empowerment Against Poverty (LEAP) : GH₵ 900 million, targeting 400,000 households; School feeding programme : GH₵ 1.1 billion, covering 2.2 million pupils; National Youth Employment Programme (NYEP) : GH₵ 700 million; Disability fund : GH₵ 200 million; Senior citizens support programme : GH₵ 150 million. The government targets lifting 500,000 additional Ghanaians out of extreme poverty by end of 2025.",
+          kw: [
+            "social protection",
+            "leap",
+            "school feeding",
+            "poverty",
+            "youth",
+            "employment",
+            "disability",
+            "nyep",
+            "households",
+            "welfare",
+            "beneficiaries",
+          ],
+        },
 
-  {id:"bu3", src:"2025-Budget-Statement.pdf", cat:"Budget · Health Sector", page:112,
-   text:"The health sector received GH₵ 7.2 billion in the 2025 Budget. Priority areas include: National Health Insurance Authority (NHIA) : GH₵ 2.1 billion; Agenda 111 (district hospitals) : GH₵ 1.8 billion for completing 27 district hospitals; Primary healthcare and community health centres : GH₵ 1.2 billion; Medicines and medical supplies : GH₵ 900 million; Mental health facilities : GH₵ 200 million. The government targets increasing health insurance coverage to 50% of the population by end of 2025.",
-   kw:["health","nhia","hospital","agenda 111","insurance","community","district","medicines","mental","coverage","billion"]},
+        {
+          id: "bu10",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Digital Economy",
+          page: 178,
+          text: "The digital economy and ICT sector received GH₵ 1.8 billion in 2025. Priority areas: National broadband infrastructure expansion : GH₵ 600 million; Ghana.gov digital services platform : GH₵ 250 million; Cybersecurity infrastructure (Cyber Security Authority) : GH₵ 180 million; Tech hubs and innovation centres : GH₵ 200 million including support for Academic City and other tertiary tech institutions; Digitisation of government records : GH₵ 170 million. The government targets 70% internet penetration by 2026.",
+          kw: [
+            "digital",
+            "ict",
+            "broadband",
+            "cybersecurity",
+            "tech",
+            "innovation",
+            "internet",
+            "ghana.gov",
+            "hub",
+            "platform",
+            "penetration",
+          ],
+        },
 
-  {id:"bu4", src:"2025-Budget-Statement.pdf", cat:"Budget · Public Debt", page:45,
-   text:"Ghana's total public debt stood at GH₵ 721 billion (approximately USD 48 billion) as of end-2024, representing about 65.6% of GDP, down from 88.1% at the peak of the debt crisis in 2022. The 2025 Budget targets a further reduction to below 60% of GDP by end of 2025 through the Domestic Debt Exchange Programme (DDEP), external debt restructuring, and fiscal consolidation. IMF support under the Extended Credit Facility amounts to USD 3 billion over 36 months.",
-   kw:["debt","public debt","imf","ddep","gdp","billion","exchange","credit","restructuring","fiscal","usd","consolidation"]},
+        {
+          id: "bu11",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Employment & Labour",
+          page: 155,
+          text: "The 2025 Budget projects the creation of 500,000 new jobs across formal and informal sectors. Key employment measures: One District One Factory (1D1F) : targeted to employ 200,000; TVET expansion with industry partnerships : 50,000 graduates; Government hiring in health and education : 30,000 new staff; AgriPreneurship programme for youth in agriculture : 100,000 jobs. The youth unemployment rate stands at 13.4% nationally and 19.8% in urban areas, with the budget targeting a reduction to 11% by end of 2025.",
+          kw: [
+            "employment",
+            "jobs",
+            "unemployment",
+            "youth",
+            "labour",
+            "factory",
+            "1d1f",
+            "tvet",
+            "agriculture",
+            "creation",
+            "hiring",
+          ],
+        },
 
-  {id:"bu5", src:"2025-Budget-Statement.pdf", cat:"Budget · Revenue Measures", page:32,
-   text:"The 2025 Budget introduces several revenue enhancement measures: (1) Electronic Levy (E-Levy) rate revised downward to 0.5% on electronic transactions; (2) Introduction of a 5% levy on betting and gaming winnings; (3) Growth and Sustainability Levy on mining companies extended for 2 additional years; (4) Corporate income tax for small and medium enterprises reduced to 20%; (5) Value Added Tax (VAT) threshold raised to GH₵ 500,000 annual turnover; (6) Tax exemptions on locally manufactured goods expanded. Total domestic revenue target is GH₵ 135.2 billion.",
-   kw:["revenue","e-levy","vat","tax","levy","sme","corporate","mining","domestic","electronic","betting","sustainability"]},
+        {
+          id: "bu12",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Inflation & Monetary",
+          page: 22,
+          text: "Ghana's inflation rate stood at 23.2% as of December 2024, down from a peak of 54.1% in December 2022. The Bank of Ghana's monetary policy rate (MPR) was 27% as at the 2025 Budget presentation. The government projects end-2025 inflation at 11.9% and targets returning to single-digit inflation by 2026. The Ghana cedi depreciated approximately 18.5% against the US dollar in 2024, following a 26% depreciation in 2023.",
+          kw: [
+            "inflation",
+            "monetary",
+            "cedi",
+            "depreciation",
+            "bank of ghana",
+            "mpr",
+            "rate",
+            "price",
+            "2024",
+            "2022",
+            "currency",
+            "policy",
+          ],
+        },
 
-  {id:"bu6", src:"2025-Budget-Statement.pdf", cat:"Budget · Infrastructure & Roads", page:134,
-   text:"Infrastructure and roads received GH₵ 9.1 billion in the 2025 Budget. Flagship projects include: Accra-Tema Motorway Extension Phase II : GH₵ 1.4 billion; Rehabilitation of 4,500 km of feeder roads nationwide : GH₵ 2.2 billion; Accra Inner City Roads rehabilitation : GH₵ 800 million; Kumasi Urban Roads : GH₵ 600 million; Continuation of the 1-District-1-Factory programme targeting 40 new factories : GH₵ 1.1 billion. The government also committed to completing stalled government projects inherited from the previous administration.",
-   kw:["infrastructure","roads","motorway","factory","construction","accra","tema","kumasi","feeder","district","rehab"]},
+        {
+          id: "bu13",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · Public Sector Wages",
+          page: 72,
+          text: "The 2025 Budget allocates GH₵ 38.2 billion for compensation of employees (public sector wages and salaries), representing 17.8% of total expenditure. This includes: Cost of living adjustment (COLA) increase of 18% for civil servants; Minimum wage raised to GH₵ 18.15 per day; Payment of all outstanding salary arrears to healthcare workers; Implementation of the new nursing and allied health salary structure. The Single Spine Salary Structure (SSSS) review is budgeted at GH₵ 1.2 billion.",
+          kw: [
+            "wages",
+            "salary",
+            "compensation",
+            "civil service",
+            "cola",
+            "minimum wage",
+            "ssss",
+            "nurse",
+            "health",
+            "workers",
+            "arrears",
+            "public sector",
+          ],
+        },
 
-  {id:"bu7", src:"2025-Budget-Statement.pdf", cat:"Budget · Agriculture Sector", page:98,
-   text:"The agriculture sector was allocated GH₵ 3.8 billion in 2025, focused on: Planting for Food and Jobs (PFJ) Phase II : GH₵ 1.2 billion; Cocoa sector support (COCOBOD) : GH₵ 900 million; Irrigation infrastructure development : GH₵ 600 million; Fertiliser and seed subsidy programme : GH₵ 400 million; Livestock and poultry development : GH₵ 300 million. The government targets a 5% growth in agricultural GDP and aims to make Ghana self-sufficient in rice production by 2027.",
-   kw:["agriculture","farming","cocoa","cocobod","planting","pfj","food","irrigation","fertiliser","rice","livestock","sector"]},
+        {
+          id: "bu14",
+          src: "2025-Budget-Statement.pdf",
+          cat: "Budget · IMF Programme",
+          page: 18,
+          text: "Ghana's IMF Extended Credit Facility (ECF) programme, approved in May 2023, provides USD 3 billion over 36 months in exchange for fiscal consolidation and structural reforms. As of the 2025 Budget presentation, Ghana had successfully completed four programme reviews. Key conditions include: maintaining the primary balance target, implementing the DDEP, restructuring external commercial debt (Eurobonds), and strengthening revenue administration through the Ghana Revenue Authority (GRA).",
+          kw: [
+            "imf",
+            "ecf",
+            "programme",
+            "review",
+            "eurobond",
+            "restructuring",
+            "gra",
+            "revenue authority",
+            "fiscal",
+            "reform",
+            "conditionality",
+            "2023",
+          ],
+        },
 
-  {id:"bu8", src:"2025-Budget-Statement.pdf", cat:"Budget · Energy Sector", page:148,
-   text:"The energy sector received GH₵ 4.5 billion in 2025. Key priorities: Power generation capacity : GH₵ 1.6 billion towards adding 500 MW of renewable energy; Ghana Grid Company (GRIDCo) transmission infrastructure : GH₵ 800 million; Electrification of remaining communities under the Self-Help Electrification Programme (SHEP) : GH₵ 500 million; LPG cylinder promotion programme : GH₵ 300 million. The government targets 10% renewable energy in the national grid by end of 2025. Power sector debt to IPPs stands at approximately USD 2.1 billion.",
-   kw:["energy","power","electricity","renewable","gridco","shep","lpg","ipp","generation","transmission","megawatt","sector"]},
+        // ════ ACITY-SPECIFIC KNOWLEDGE ════
 
-  {id:"bu9", src:"2025-Budget-Statement.pdf", cat:"Budget · Social Protection", page:165,
-   text:"Social protection programmes received GH₵ 5.6 billion in 2025. Key programmes include: Livelihood Empowerment Against Poverty (LEAP) : GH₵ 900 million, targeting 400,000 households; School feeding programme : GH₵ 1.1 billion, covering 2.2 million pupils; National Youth Employment Programme (NYEP) : GH₵ 700 million; Disability fund : GH₵ 200 million; Senior citizens support programme : GH₵ 150 million. The government targets lifting 500,000 additional Ghanaians out of extreme poverty by end of 2025.",
-   kw:["social protection","leap","school feeding","poverty","youth","employment","disability","nyep","households","welfare","beneficiaries"]},
+        {
+          id: "ac1",
+          src: "ACity Knowledge Base",
+          cat: "ACity · Overview",
+          text: "Academic City University College (ACity) is a private university located in Accra, Ghana, founded in 2018. It focuses on technology, engineering, business, and social sciences. ACity is accredited by the National Accreditation Board (NAB) of Ghana and is known for its industry-aligned curriculum. The 2025 Ghana Budget specifically allocated funds to ACity and other tech institutions through the digital economy ICT tech hubs budget line of GH₵ 200 million.",
+          kw: [
+            "acity",
+            "academic city",
+            "university",
+            "accra",
+            "ghana",
+            "nab",
+            "accreditation",
+            "founded",
+            "2018",
+            "tech",
+            "industry",
+          ],
+        },
 
-  {id:"bu10", src:"2025-Budget-Statement.pdf", cat:"Budget · Digital Economy", page:178,
-   text:"The digital economy and ICT sector received GH₵ 1.8 billion in 2025. Priority areas: National broadband infrastructure expansion : GH₵ 600 million; Ghana.gov digital services platform : GH₵ 250 million; Cybersecurity infrastructure (Cyber Security Authority) : GH₵ 180 million; Tech hubs and innovation centres : GH₵ 200 million including support for Academic City and other tertiary tech institutions; Digitisation of government records : GH₵ 170 million. The government targets 70% internet penetration by 2026.",
-   kw:["digital","ict","broadband","cybersecurity","tech","innovation","internet","ghana.gov","hub","platform","penetration"]},
+        {
+          id: "ac2",
+          src: "ACity Knowledge Base",
+          cat: "ACity · CS4241 Course",
+          text: "CS4241: Introduction to Artificial Intelligence is a third/fourth-year course in the Faculty of Computational Sciences and Informatics at ACity. Topics include: search algorithms, knowledge representation, machine learning (supervised and unsupervised), neural networks, natural language processing, computer vision, AI ethics, and applied AI tools. The 2026 end-of-semester exam requires students to build a RAG (Retrieval-Augmented Generation) application using the Ghana Election CSV and 2025 Budget PDF as data sources.",
+          kw: [
+            "cs4241",
+            "artificial intelligence",
+            "ai",
+            "machine learning",
+            "neural",
+            "nlp",
+            "rag",
+            "exam",
+            "faculty",
+            "course",
+            "2026",
+            "computational",
+          ],
+        },
 
-  {id:"bu11", src:"2025-Budget-Statement.pdf", cat:"Budget · Employment & Labour", page:155,
-   text:"The 2025 Budget projects the creation of 500,000 new jobs across formal and informal sectors. Key employment measures: One District One Factory (1D1F) : targeted to employ 200,000; TVET expansion with industry partnerships : 50,000 graduates; Government hiring in health and education : 30,000 new staff; AgriPreneurship programme for youth in agriculture : 100,000 jobs. The youth unemployment rate stands at 13.4% nationally and 19.8% in urban areas, with the budget targeting a reduction to 11% by end of 2025.",
-   kw:["employment","jobs","unemployment","youth","labour","factory","1d1f","tvet","agriculture","creation","hiring"]},
+        {
+          id: "ac3",
+          src: "ACity Knowledge Base",
+          cat: "RAG System · Explanation",
+          text: "Retrieval-Augmented Generation (RAG) is an AI architecture that combines a retrieval system with a generative language model. The pipeline: (1) Document ingestion and chunking : splitting documents into segments of 200–500 tokens with overlap; (2) Embedding : encoding chunks into vector representations using models like sentence-transformers; (3) Vector storage : storing embeddings in databases like FAISS or ChromaDB; (4) Retrieval : for a user query, compute similarity (cosine similarity) to find top-k relevant chunks; (5) Generation : inject retrieved chunks into a prompt and pass to an LLM for response. RAG significantly reduces hallucination by grounding responses in actual retrieved documents.",
+          kw: [
+            "rag",
+            "retrieval",
+            "augmented",
+            "generation",
+            "embedding",
+            "vector",
+            "chunking",
+            "faiss",
+            "chroma",
+            "cosine",
+            "similarity",
+            "hallucination",
+            "llm",
+            "pipeline",
+          ],
+        },
+      ];
 
-  {id:"bu12", src:"2025-Budget-Statement.pdf", cat:"Budget · Inflation & Monetary", page:22,
-   text:"Ghana's inflation rate stood at 23.2% as of December 2024, down from a peak of 54.1% in December 2022. The Bank of Ghana's monetary policy rate (MPR) was 27% as at the 2025 Budget presentation. The government projects end-2025 inflation at 11.9% and targets returning to single-digit inflation by 2026. The Ghana cedi depreciated approximately 18.5% against the US dollar in 2024, following a 26% depreciation in 2023.",
-   kw:["inflation","monetary","cedi","depreciation","bank of ghana","mpr","rate","price","2024","2022","currency","policy"]},
+      // ── SIMPLE TF-IDF-LIKE RETRIEVAL ─────────────────────────────────────
+      function tok(s) {
+        return s
+          .toLowerCase()
+          .replace(/[^a-z0-9\s₵%]/g, " ")
+          .split(/\s+/)
+          .filter((w) => w.length > 2);
+      }
 
-  {id:"bu13", src:"2025-Budget-Statement.pdf", cat:"Budget · Public Sector Wages", page:72,
-   text:"The 2025 Budget allocates GH₵ 38.2 billion for compensation of employees (public sector wages and salaries), representing 17.8% of total expenditure. This includes: Cost of living adjustment (COLA) increase of 18% for civil servants; Minimum wage raised to GH₵ 18.15 per day; Payment of all outstanding salary arrears to healthcare workers; Implementation of the new nursing and allied health salary structure. The Single Spine Salary Structure (SSSS) review is budgeted at GH₵ 1.2 billion.",
-   kw:["wages","salary","compensation","civil service","cola","minimum wage","ssss","nurse","health","workers","arrears","public sector"]},
+      function sim(query, chunk) {
+        const qt = tok(query);
+        const ct = new Set(tok(chunk.text + " " + chunk.kw.join(" ")));
+        let match = 0;
+        qt.forEach((t) => {
+          if (ct.has(t)) match++;
+        });
+        // direct keyword match boost
+        let boost = 0;
+        chunk.kw.forEach((k) => {
+          if (query.toLowerCase().includes(k)) boost += 0.18;
+        });
+        // source keyword in query
+        if (
+          query.toLowerCase().includes("election") &&
+          chunk.src.includes("Election")
+        )
+          boost += 0.2;
+        if (
+          (query.toLowerCase().includes("budget") ||
+            query.toLowerCase().includes("ghc") ||
+            query.toLowerCase().includes("₵")) &&
+          chunk.src.includes("Budget")
+        )
+          boost += 0.2;
+        const iou = match / (qt.length + ct.size - match + 1);
+        return Math.min(1, iou * 9 + boost);
+      }
 
-  {id:"bu14", src:"2025-Budget-Statement.pdf", cat:"Budget · IMF Programme", page:18,
-   text:"Ghana's IMF Extended Credit Facility (ECF) programme, approved in May 2023, provides USD 3 billion over 36 months in exchange for fiscal consolidation and structural reforms. As of the 2025 Budget presentation, Ghana had successfully completed four programme reviews. Key conditions include: maintaining the primary balance target, implementing the DDEP, restructuring external commercial debt (Eurobonds), and strengthening revenue administration through the Ghana Revenue Authority (GRA).",
-   kw:["imf","ecf","programme","review","eurobond","restructuring","gra","revenue authority","fiscal","reform","conditionality","2023"]},
+      function retrieve(q, k = 3) {
+        return KB.map((c) => ({ ...c, score: sim(q, c) }))
+          .sort((a, b) => b.score - a.score)
+          .slice(0, k)
+          .filter((c) => c.score > 0.005);
+      }
 
-  // ════ ACITY-SPECIFIC KNOWLEDGE ════
+      // ── LOCAL RESPONSE GENERATION ────────────────────────────────────────
+      // Rule-based generator using retrieved chunks : no API needed
+      function generateAnswer(query, chunks) {
+        if (!chunks || chunks.length === 0) {
+          return `I don't have enough information about "<em>${esc(query)}</em>" in my knowledge base. Try asking about the <strong>2025 Ghana Budget</strong> (sectors, allocations, IMF, debt), or <strong>Ghana election results</strong> (2016 to 2024).`;
+        }
 
-  {id:"ac1", src:"ACity Knowledge Base", cat:"ACity · Overview",
-   text:"Academic City University College (ACity) is a private university located in Accra, Ghana, founded in 2018. It focuses on technology, engineering, business, and social sciences. ACity is accredited by the National Accreditation Board (NAB) of Ghana and is known for its industry-aligned curriculum. The 2025 Ghana Budget specifically allocated funds to ACity and other tech institutions through the digital economy ICT tech hubs budget line of GH₵ 200 million.",
-   kw:["acity","academic city","university","accra","ghana","nab","accreditation","founded","2018","tech","industry"]},
+        const top = chunks[0];
+        const allText = chunks.map((c) => c.text).join(" ");
+        const ql = query.toLowerCase();
 
-  {id:"ac2", src:"ACity Knowledge Base", cat:"ACity · CS4241 Course",
-   text:"CS4241: Introduction to Artificial Intelligence is a third/fourth-year course in the Faculty of Computational Sciences and Informatics at ACity. Topics include: search algorithms, knowledge representation, machine learning (supervised and unsupervised), neural networks, natural language processing, computer vision, AI ethics, and applied AI tools. The 2026 end-of-semester exam requires students to build a RAG (Retrieval-Augmented Generation) application using the Ghana Election CSV and 2025 Budget PDF as data sources.",
-   kw:["cs4241","artificial intelligence","ai","machine learning","neural","nlp","rag","exam","faculty","course","2026","computational"]},
+        // ── detect intent and craft structured answer ──
+        let answer = "";
 
-  {id:"ac3", src:"ACity Knowledge Base", cat:"RAG System · Explanation",
-   text:"Retrieval-Augmented Generation (RAG) is an AI architecture that combines a retrieval system with a generative language model. The pipeline: (1) Document ingestion and chunking : splitting documents into segments of 200–500 tokens with overlap; (2) Embedding : encoding chunks into vector representations using models like sentence-transformers; (3) Vector storage : storing embeddings in databases like FAISS or ChromaDB; (4) Retrieval : for a user query, compute similarity (cosine similarity) to find top-k relevant chunks; (5) Generation : inject retrieved chunks into a prompt and pass to an LLM for response. RAG significantly reduces hallucination by grounding responses in actual retrieved documents.",
-   kw:["rag","retrieval","augmented","generation","embedding","vector","chunking","faiss","chroma","cosine","similarity","hallucination","llm","pipeline"]}
-];
+        // Numbers / figures extraction
+        const ghcMatches = allText.match(/GH₵\s?[\d,.]+\s?billion/gi) || [];
+        const pctMatches = allText.match(/\d+\.?\d*%/g) || [];
 
-// ── SIMPLE TF-IDF-LIKE RETRIEVAL ─────────────────────────────────────
-function tok(s){
-  return s.toLowerCase().replace(/[^a-z0-9\s₵%]/g,' ').split(/\s+/).filter(w=>w.length>2);
-}
+        // Build answer paragraphs from top chunk
+        answer += mdToHtml(top.text);
 
-function sim(query, chunk){
-  const qt = tok(query);
-  const ct = new Set(tok(chunk.text + ' ' + chunk.kw.join(' ')));
-  let match=0;
-  qt.forEach(t=>{ if(ct.has(t)) match++; });
-  // direct keyword match boost
-  let boost=0;
-  chunk.kw.forEach(k=>{ if(query.toLowerCase().includes(k)) boost+=0.18; });
-  // source keyword in query
-  if(query.toLowerCase().includes('election') && chunk.src.includes('Election')) boost+=0.2;
-  if((query.toLowerCase().includes('budget') || query.toLowerCase().includes('ghc') || query.toLowerCase().includes('₵')) && chunk.src.includes('Budget')) boost+=0.2;
-  const iou = match / (qt.length + ct.size - match + 1);
-  return Math.min(1, iou*9 + boost);
-}
+        // If multiple chunks add supplementary info
+        if (chunks.length > 1) {
+          const extra = chunks
+            .slice(1)
+            .filter((c) => c.id !== top.id)
+            .map((c) => {
+              // pull one key sentence
+              const sents = c.text.split(/\.\s+/);
+              return sents[0] + (sents[1] ? ". " + sents[1] : "") + ".";
+            })
+            .join(" ");
+          if (extra.trim()) {
+            answer += `<br><br><em style="color:rgba(255,255,255,.65);font-size:13px;">Additionally:</em> ${mdToHtml(extra)}`;
+          }
+        }
 
-function retrieve(q, k=3){
-  return KB
-    .map(c=>({...c, score:sim(q,c)}))
-    .sort((a,b)=>b.score-a.score)
-    .slice(0,k)
-    .filter(c=>c.score>0.005);
-}
+        // Follow-up suggestion
+        const followUps = {
+          election:
+            "You can also ask about <strong>regional breakdowns</strong>, <strong>parliamentary seats</strong>, or <strong>historical trends</strong>.",
+          budget:
+            "You can also ask about other budget sectors like <strong>health</strong>, <strong>agriculture</strong>, or <strong>debt management</strong>.",
+          education:
+            "Related: try asking about the <strong>GETFund</strong>, <strong>Free SHS</strong> programme, or <strong>TVET allocations</strong>.",
+          health:
+            "Related: ask about <strong>Agenda 111</strong>, <strong>NHIA coverage targets</strong>, or <strong>medicine allocations</strong>.",
+          acity:
+            "You can also ask about <strong>CS4241 topics</strong>, <strong>RAG architecture</strong>, or the <strong>exam requirements</strong>.",
+          rag: "Related: ask how <strong>chunking strategy</strong> affects retrieval, or about <strong>embedding models</strong>.",
+          debt: "Related: ask about the <strong>IMF programme conditions</strong>, <strong>DDEP</strong>, or <strong>Eurobond restructuring</strong>.",
+          imf: "Related: ask about <strong>Ghana's fiscal deficit target</strong> or the <strong>primary balance</strong> requirements.",
+        };
 
-// ── LOCAL RESPONSE GENERATION ────────────────────────────────────────
-// Rule-based generator using retrieved chunks : no API needed
-function generateAnswer(query, chunks){
-  if(!chunks || chunks.length===0){
-    return `I don't have enough information about "<em>${esc(query)}</em>" in my knowledge base. Try asking about the <strong>2025 Ghana Budget</strong> (sectors, allocations, IMF, debt), or <strong>Ghana election results</strong> (2016 to 2024).`;
-  }
+        let hint = "";
+        for (const [k, v] of Object.entries(followUps)) {
+          if (ql.includes(k)) {
+            hint = v;
+            break;
+          }
+        }
+        if (!hint) {
+          if (top.src.includes("Election")) hint = followUps.election;
+          else if (top.src.includes("Budget")) hint = followUps.budget;
+        }
 
-  const top = chunks[0];
-  const allText = chunks.map(c=>c.text).join(' ');
-  const ql = query.toLowerCase();
+        if (hint)
+          answer += `<br><br><span style="font-size:12px;color:rgba(255,255,255,.5);">&#8618; ${hint}</span>`;
 
-  // ── detect intent and craft structured answer ──
-  let answer = '';
+        return answer;
+      }
 
-  // Numbers / figures extraction
-  const ghcMatches = allText.match(/GH₵\s?[\d,.]+\s?billion/gi) || [];
-  const pctMatches  = allText.match(/\d+\.?\d*%/g) || [];
+      function mdToHtml(t) {
+        return t
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\((\d)\)/g, "<strong>($1)</strong>")
+          .replace(/GH₵/g, "<strong>GH₵</strong>")
+          .replace(/USD/g, "<strong>USD</strong>")
+          .replace(/\n/g, "<br>");
+      }
 
-  // Build answer paragraphs from top chunk
-  answer += mdToHtml(top.text);
+      function esc(s) {
+        return s
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
 
-  // If multiple chunks add supplementary info
-  if(chunks.length > 1){
-    const extra = chunks.slice(1)
-      .filter(c=>c.id !== top.id)
-      .map(c=>{
-        // pull one key sentence
-        const sents = c.text.split(/\.\s+/);
-        return sents[0] + (sents[1] ? '. ' + sents[1] : '') + '.';
-      }).join(' ');
-    if(extra.trim()){
-      answer += `<br><br><em style="color:rgba(255,255,255,.65);font-size:13px;">Additionally:</em> ${mdToHtml(extra)}`;
-    }
-  }
+      // ── UI STATE ─────────────────────────────────────────────────────────
+      let busy = false;
+      let qHistory = [];
 
-  // Follow-up suggestion
-  const followUps = {
-    election:  'You can also ask about <strong>regional breakdowns</strong>, <strong>parliamentary seats</strong>, or <strong>historical trends</strong>.',
-    budget:    'You can also ask about other budget sectors like <strong>health</strong>, <strong>agriculture</strong>, or <strong>debt management</strong>.',
-    education: 'Related: try asking about the <strong>GETFund</strong>, <strong>Free SHS</strong> programme, or <strong>TVET allocations</strong>.',
-    health:    'Related: ask about <strong>Agenda 111</strong>, <strong>NHIA coverage targets</strong>, or <strong>medicine allocations</strong>.',
-    acity:     'You can also ask about <strong>CS4241 topics</strong>, <strong>RAG architecture</strong>, or the <strong>exam requirements</strong>.',
-    rag:       'Related: ask how <strong>chunking strategy</strong> affects retrieval, or about <strong>embedding models</strong>.',
-    debt:      'Related: ask about the <strong>IMF programme conditions</strong>, <strong>DDEP</strong>, or <strong>Eurobond restructuring</strong>.',
-    imf:       'Related: ask about <strong>Ghana\'s fiscal deficit target</strong> or the <strong>primary balance</strong> requirements.',
-  };
+      // screen transitions
+      document.getElementById("btn-launch").addEventListener("click", () => {
+        document.getElementById("s-intro").classList.add("out");
+        document.getElementById("s-chat").classList.remove("out");
+        if (!document.getElementById("msgs").children.length) welcome();
+      });
+      document.getElementById("btn-back").addEventListener("click", () => {
+        document.getElementById("s-chat").classList.add("out");
+        document.getElementById("s-intro").classList.remove("out");
+      });
+      document.getElementById("btn-clear").addEventListener("click", () => {
+        document.getElementById("msgs").innerHTML = "";
+        qHistory = [];
+        renderHist();
+        renderDocs([]);
+        welcome();
+      });
 
-  let hint = '';
-  for(const [k,v] of Object.entries(followUps)){
-    if(ql.includes(k)){ hint = v; break; }
-  }
-  if(!hint){
-    if(top.src.includes('Election')) hint = followUps.election;
-    else if(top.src.includes('Budget')) hint = followUps.budget;
-  }
+      // nav tabs
+      document.querySelectorAll(".ntab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".ntab")
+            .forEach((t) => t.classList.remove("on"));
+          tab.classList.add("on");
+          const p = tab.dataset.p;
+          document
+            .getElementById("p-chat")
+            .classList.toggle("hide", p !== "chat");
+          document
+            .getElementById("p-docs")
+            .classList.toggle("hide", p !== "docs");
+          document
+            .getElementById("p-hist")
+            .classList.toggle("hide", p !== "hist");
+        });
+      });
 
-  if(hint) answer += `<br><br><span style="font-size:12px;color:rgba(255,255,255,.5);">&#8618; ${hint}</span>`;
+      // auto-resize textarea
+      const inpEl = document.getElementById("inp");
+      inpEl.addEventListener("input", () => {
+        inpEl.style.height = "auto";
+        inpEl.style.height = Math.min(inpEl.scrollHeight, 120) + "px";
+      });
+      inpEl.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          send();
+        }
+      });
+      document.getElementById("btn-send").addEventListener("click", send);
 
-  return answer;
-}
+      function setStat(t) {
+        document.getElementById("stat").textContent = t;
+      }
 
-function mdToHtml(t){
-  return t
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\((\d)\)/g,'<strong>($1)</strong>')
-    .replace(/GH₵/g,'<strong>GH₵</strong>')
-    .replace(/USD/g,'<strong>USD</strong>')
-    .replace(/\n/g,'<br>');
-}
+      // ── MESSAGES ─────────────────────────────────────────────────────────
+      const msgsEl = document.getElementById("msgs");
 
-function esc(s){
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+      function addBub(html, who) {
+        const row = document.createElement("div");
+        row.className = "mrow" + (who === "u" ? " u" : "");
+        const av = document.createElement("div");
+        av.className = who === "u" ? "av av-u" : "av av-ai";
+        av.textContent = who === "u" ? "ME" : "AC";
+        const b = document.createElement("div");
+        b.className = who === "u" ? "bub bu" : "bub bai";
+        b.innerHTML = html;
+        row.appendChild(av);
+        row.appendChild(b);
+        msgsEl.appendChild(row);
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+      }
 
-// ── UI STATE ─────────────────────────────────────────────────────────
-let busy = false;
-let qHistory = [];
+      function addTyping() {
+        const row = document.createElement("div");
+        row.className = "trow";
+        const av = document.createElement("div");
+        av.className = "av av-ai";
+        av.textContent = "AC";
+        const tb = document.createElement("div");
+        tb.className = "tbub";
+        tb.innerHTML =
+          '<div class="td"></div><div class="td"></div><div class="td"></div>';
+        row.appendChild(av);
+        row.appendChild(tb);
+        msgsEl.appendChild(row);
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+        return row;
+      }
 
-// screen transitions
-document.getElementById('btn-launch').addEventListener('click',()=>{
-  document.getElementById('s-intro').classList.add('out');
-  document.getElementById('s-chat').classList.remove('out');
-  if(!document.getElementById('msgs').children.length) welcome();
-});
-document.getElementById('btn-back').addEventListener('click',()=>{
-  document.getElementById('s-chat').classList.add('out');
-  document.getElementById('s-intro').classList.remove('out');
-});
-document.getElementById('btn-clear').addEventListener('click',()=>{
-  document.getElementById('msgs').innerHTML='';
-  qHistory=[];
-  renderHist();
-  renderDocs([]);
-  welcome();
-});
-
-// nav tabs
-document.querySelectorAll('.ntab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('on'));
-    tab.classList.add('on');
-    const p = tab.dataset.p;
-    document.getElementById('p-chat').classList.toggle('hide', p!=='chat');
-    document.getElementById('p-docs').classList.toggle('hide', p!=='docs');
-    document.getElementById('p-hist').classList.toggle('hide', p!=='hist');
-  });
-});
-
-// auto-resize textarea
-const inpEl = document.getElementById('inp');
-inpEl.addEventListener('input',()=>{
-  inpEl.style.height='auto';
-  inpEl.style.height=Math.min(inpEl.scrollHeight,120)+'px';
-});
-inpEl.addEventListener('keydown',e=>{
-  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}
-});
-document.getElementById('btn-send').addEventListener('click',send);
-
-function setStat(t){ document.getElementById('stat').textContent=t; }
-
-// ── MESSAGES ─────────────────────────────────────────────────────────
-const msgsEl = document.getElementById('msgs');
-
-function addBub(html, who){
-  const row=document.createElement('div');
-  row.className='mrow'+(who==='u'?' u':'');
-  const av=document.createElement('div');
-  av.className=who==='u'?'av av-u':'av av-ai';
-  av.textContent=who==='u'?'ME':'AC';
-  const b=document.createElement('div');
-  b.className=who==='u'?'bub bu':'bub bai';
-  b.innerHTML=html;
-  row.appendChild(av); row.appendChild(b);
-  msgsEl.appendChild(row);
-  msgsEl.scrollTop=msgsEl.scrollHeight;
-}
-
-function addTyping(){
-  const row=document.createElement('div');
-  row.className='trow';
-  const av=document.createElement('div');
-  av.className='av av-ai'; av.textContent='AC';
-  const tb=document.createElement('div');
-  tb.className='tbub';
-  tb.innerHTML='<div class="td"></div><div class="td"></div><div class="td"></div>';
-  row.appendChild(av); row.appendChild(tb);
-  msgsEl.appendChild(row);
-  msgsEl.scrollTop=msgsEl.scrollHeight;
-  return row;
-}
-
-function welcome(){
-  addBub(`Hello! I'm <strong>ACity Assistant</strong>, your RAG-powered academic helper for <strong>Academic City University College</strong>, Ghana.
+      function welcome() {
+        addBub(
+          `Hello! I'm <strong>ACity Assistant</strong>, your RAG-powered academic helper for <strong>Academic City University College</strong>, Ghana.
     <br><br>I answer questions directly from two real documents:
     <ul>
       <li><strong>Ghana_Election_Result.csv</strong> : presidential &amp; parliamentary results 2016–2024</li>
@@ -571,96 +1833,111 @@ function welcome(){
       <div class="chip cd">Ghana_Election_Result.csv</div>
       <div class="chip cs">2025-Budget-Statement.pdf</div>
       <div class="chip cp">14 document chunks</div>
-    </div>`,'ai');
-}
+    </div>`,
+          "ai",
+        );
+      }
 
-// ── DOCS PANEL ───────────────────────────────────────────────────────
-function renderDocs(chunks){
-  const el=document.getElementById('docs-inner');
-  if(!chunks||!chunks.length){
-    el.innerHTML='<div class="empty">Send a message to see retrieved chunks here.</div>';
-    return;
-  }
-  el.innerHTML=chunks.map((c,i)=>`
+      // ── DOCS PANEL ───────────────────────────────────────────────────────
+      function renderDocs(chunks) {
+        const el = document.getElementById("docs-inner");
+        if (!chunks || !chunks.length) {
+          el.innerHTML =
+            '<div class="empty">Send a message to see retrieved chunks here.</div>';
+          return;
+        }
+        el.innerHTML = chunks
+          .map(
+            (c, i) => `
     <div class="dcard">
-      <div class="dtitle">#${i+1} · ${c.cat}</div>
-      <div style="font-size:10px;color:var(--t3);margin-bottom:6px;">${c.src}${c.page?' · page '+c.page:''}</div>
+      <div class="dtitle">#${i + 1} · ${c.cat}</div>
+      <div style="font-size:10px;color:var(--t3);margin-bottom:6px;">${c.src}${c.page ? " · page " + c.page : ""}</div>
       <div class="dbody">${esc(c.text)}</div>
       <div class="dsrow">
         <span class="dsl">Similarity</span>
-        <div class="dtr"><div class="dfl" style="width:${Math.round(c.score*100)}%"></div></div>
-        <span class="dsl">${Math.round(c.score*100)}%</span>
+        <div class="dtr"><div class="dfl" style="width:${Math.round(c.score * 100)}%"></div></div>
+        <span class="dsl">${Math.round(c.score * 100)}%</span>
       </div>
-    </div>`).join('');
-}
+    </div>`,
+          )
+          .join("");
+      }
 
-// ── HISTORY PANEL ────────────────────────────────────────────────────
-function renderHist(){
-  const el=document.getElementById('hist-inner');
-  if(!qHistory.length){
-    el.innerHTML='<div class="empty">No history yet.</div>';
-    return;
-  }
-  el.innerHTML=[...qHistory].reverse().map(q=>`
+      // ── HISTORY PANEL ────────────────────────────────────────────────────
+      function renderHist() {
+        const el = document.getElementById("hist-inner");
+        if (!qHistory.length) {
+          el.innerHTML = '<div class="empty">No history yet.</div>';
+          return;
+        }
+        el.innerHTML = [...qHistory]
+          .reverse()
+          .map(
+            (q) => `
     <div class="hitem">
       <div class="hq">${esc(q.q)}</div>
-      <div class="ht">${q.time} · ${q.n} chunk${q.n!==1?'s':''} retrieved · Top score: ${q.top}%</div>
-    </div>`).join('');
-}
+      <div class="ht">${q.time} · ${q.n} chunk${q.n !== 1 ? "s" : ""} retrieved · Top score: ${q.top}%</div>
+    </div>`,
+          )
+          .join("");
+      }
 
-// ── SEND ─────────────────────────────────────────────────────────────
-async function send(){
-  const q=inpEl.value.trim();
-  if(!q||busy) return;
-  busy=true;
-  inpEl.value='';
-  inpEl.style.height='auto';
-  document.getElementById('btn-send').disabled=true;
+      // ── SEND ─────────────────────────────────────────────────────────────
+      async function send() {
+        const q = inpEl.value.trim();
+        if (!q || busy) return;
+        busy = true;
+        inpEl.value = "";
+        inpEl.style.height = "auto";
+        document.getElementById("btn-send").disabled = true;
 
-  addBub(esc(q),'u');
-  setStat('Retrieving context...');
-  const typing=addTyping();
+        addBub(esc(q), "u");
+        setStat("Retrieving context...");
+        const typing = addTyping();
 
-  // simulate slight retrieval delay for realism
-  await new Promise(r=>setTimeout(r,600+Math.random()*400));
+        // simulate slight retrieval delay for realism
+        await new Promise((r) => setTimeout(r, 600 + Math.random() * 400));
 
-  const chunks=retrieve(q,3);
-  renderDocs(chunks);
+        const chunks = retrieve(q, 3);
+        renderDocs(chunks);
 
-  const now=new Date();
-  qHistory.push({
-    q, time:now.toLocaleTimeString(),
-    n:chunks.length,
-    top:chunks.length?Math.round(chunks[0].score*100):0
-  });
-  renderHist();
+        const now = new Date();
+        qHistory.push({
+          q,
+          time: now.toLocaleTimeString(),
+          n: chunks.length,
+          top: chunks.length ? Math.round(chunks[0].score * 100) : 0,
+        });
+        renderHist();
 
-  setStat('Generating answer...');
-  await new Promise(r=>setTimeout(r,300));
+        setStat("Generating answer...");
+        await new Promise((r) => setTimeout(r, 300));
 
-  typing.remove();
+        typing.remove();
 
-  const answer=generateAnswer(q,chunks);
-  const top=chunks[0];
-  const scoreVal=top?Math.round(top.score*100):0;
+        const answer = generateAnswer(q, chunks);
+        const top = chunks[0];
+        const scoreVal = top ? Math.round(top.score * 100) : 0;
 
-  const chipHtml = chunks.length ? `
+        const chipHtml = chunks.length
+          ? `
     <div class="crow">
-      <div class="chip cd">${top.src}${top.page?' · p.'+top.page:''}</div>
+      <div class="chip cd">${top.src}${top.page ? " · p." + top.page : ""}</div>
       <div class="chip cs">Score · ${top.score.toFixed(2)}</div>
-      <div class="chip cp">${chunks.length} chunk${chunks.length>1?'s':''}</div>
+      <div class="chip cp">${chunks.length} chunk${chunks.length > 1 ? "s" : ""}</div>
     </div>
     <div class="srow">
       <span class="slb">Relevance</span>
       <div class="str"><div class="sfl" style="width:${scoreVal}%"></div></div>
       <span class="slb">${scoreVal}%</span>
-    </div>` : '';
+    </div>`
+          : "";
 
-  addBub(answer+chipHtml,'ai');
-  setStat('Online · Ready');
-  busy=false;
-  document.getElementById('btn-send').disabled=false;
-}
-</script>
-</body>
+        addBub(answer + chipHtml, "ai");
+        setStat("Online · Ready");
+        busy = false;
+        document.getElementById("btn-send").disabled = false;
+      }
+    </script>
+  </body>
 </html>
